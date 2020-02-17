@@ -17,6 +17,8 @@ services:
     image: postgres:9.4
     volumes:
       - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=12345
     networks:
       - backend
 
@@ -38,7 +40,8 @@ services:
 
 
   result:
-    image: examplevotingappmaster_result
+    build: ./result
+    image: ycharki/pfa_result
     ports:
       - 5001:80
     networks:
@@ -55,7 +58,8 @@ services:
 
 
   worker:
-    image: examplevotingappmaster_worker
+    build: ./worker
+    image: ycharki/pfa_worker
     networks:
       - frontend
       - backend
@@ -68,8 +72,7 @@ services:
         delay: 10s
         max_attempts: 10
         window: 120s
-      placement:
-        constraints: [node.role == manager]
+
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
