@@ -1,0 +1,103 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html ng-app="catsvsdogs">
+<head>
+  <base href="/index.html">
+<title>Resultats</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!--// css -->
+<script src="js/jquery-1.11.1.min.js"></script>	
+<!-- chart -->
+<script src="js/Chart.js"></script>
+<!-- //chart -->
+<link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,100italic,600,700,400italic' rel='stylesheet' type='text/css'></head>
+</head>
+<body ng-controller="statsCtrl" onload="hamza()" >
+<!--main-->
+ <div class="wrap"> 
+         <h1>Résultat des votes</h1>
+    <div class="main">  
+   <!--start-second-->
+			<div class="sap_tabs">	
+				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+					 		  	 
+						<div class="resp-tabs-container">
+							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+								<div class="facts">
+								    <ul class="tab_list">
+										<div class="graph">
+												<h3>Statistiques</h3>
+                        <div id="aPercent" onchange="hamza()" style="color:#6c757d;">{{aPercent | number:1}}%<span> Hamza OUSSI</span></div>
+                        <div id="bPercent" onchange="hamza()" style="color:#007bff;">{{bPercent | number:1}}%<span> Malam ABDOU</span></div>
+                        <div id="cPercent" onchange="hamza()" style="color:#dc3545;">{{cPercent | number:1}}%<span> Youssef CHARKI</span></div>
+                        <div id="dPercent" onchange="hamza()" style="color:#ffc107;">{{dPercent | number:1}}%<span> Ahmed INIRZ</span></div>
+												<div class="span1">  
+													<canvas id="doughnut" height="300" width="400" style="width: 400px; height: 300px;">                               </canvas>
+															<script >
+																function hamza(){
+                                  alert(document.getElementById("dPercent").innerHTML);
+                                  var doughnutData = [
+                                    {
+                                      value: parseInt(document.getElementById("aPercent").innerHTML),
+                                      color:"#6c757d"
+                                    },
+                                    {
+                                      value: parseInt(document.getElementById("bPercent").innerHTML),
+                                      color : "#007bff"
+                                    },
+                                    {
+                                      value: parseInt(document.getElementById("cPercent").innerHTML),
+                                      color : "#dc3545"
+                                    },
+                                    {
+                                      value: parseInt(document.getElementById("dPercent").innerHTML),
+                                      color : "#ffc107"
+                                    },
+                                  ];
+                              new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);
+                                }
+														</script>
+												</div>
+										</div>
+								    </ul>
+								</div>
+							</div>
+
+							 <ul class="resp-tabs-list">
+						  <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span onclick="hamza()">Resultats</span></li>
+						 
+						  <div class="clear"></div>
+					  </ul>		
+						</div>
+				</div>
+			</div>
+			<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+					<script type="text/javascript">
+						$(document).ready(function () {
+							$('#horizontalTab').easyResponsiveTabs({
+								type: 'default', //Types: default, vertical, accordion           
+								width: 'auto', //auto or any width like 600px
+								fit: true   // 100% fit in a container
+							});
+						});
+					   </script>
+			
+    	</div>
+</div>
+</div>
+    <script src="socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    {{aPercent | number:1}}%
+</body>
+</html>

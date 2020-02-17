@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Les votes</title>
+        <link href="{{ url_for('static',filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet" >
+        <script src="/bootstrap/js/bootstrap.js">
+			$('.alert').alert()
+		</script>
+    </head>
+    <body class="container-fluid" style="background-color:">
+        <h1 class="text-center" style="margin: 30px">Les élections de Président de gourpe de Projet de Fin d'année</h1>
+        <form id="choice" name='form' method="POST" action="/">
+        <div class="row" style="width: 1000px;margin:0 auto;">
+          <div class="col-sm-3">
+            <div class="card text-white bg-secondary">
+                <img class="card-img-top" src="{{ url_for('static',filename='img/0.jpg') }}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{option_a}}</h5>
+                <p class="card-text">Pour mieu gérer le projet votez pour moi</p>
+                <button id="a"  type="submit" name="vote" class="btn btn-dark" value="a">
+                    Voter
+              </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card text-white bg-primary">
+                <img class="card-img-top" src="{{ url_for('static',filename='img/5.jpg') }}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{option_b}}</h5>
+                <p class="card-text">Pour mieu gérer le projet votez pour moi</p>
+                <button id="a"  type="submit" name="vote" class="btn btn-dark" value="b">
+                    Voter
+              </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 ">
+            <div class="card text-white bg-danger">
+                <img class="card-img-top" src="{{ url_for('static',filename='img/4.jpg') }}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{option_c}}</h5>
+                <p class="card-text">Pour mieu gérer le projet votez pour moi</p>
+                <button id="a"  type="submit" name="vote" class="btn btn-dark" value="c">
+                    Voter
+              </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card text-white bg-warning">
+                <img class="card-img-top" src="{{ url_for('static',filename='img/3.jpg') }}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{option_d}}</h5>
+                <p class="card-text">Pour mieu gérer le projet votez pour moi</p>
+               <button id="a"  type="submit" name="vote" class="btn btn-dark" value="d">
+                    Voter
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>  
+    </form>
+        <div id="tip">
+        </div>
+		<div style="width: 500px;margin: 0 auto; class="alert alert-dark alert-dismissible fade show" role="alert">
+		  <strong>Processed by container ID </strong> {{hostname}}.
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+        <div id="hostname">
+          Processed by container ID {{hostname}}
+        </div>
+        {% if vote %}
+        <script>
+          var vote = "{{vote}}";
+
+          if(vote == "a"){
+            $(".a").prop('disabled', true);
+            $(".a").html('{{option_a}} <i class="fa fa-check-circle"></i>');
+            $(".b").css('opacity','0.5');
+          }
+          if(vote == "b"){
+            $(".b").prop('disabled', true);
+            $(".b").html('{{option_b}} <i class="fa fa-check-circle"></i>');
+            $(".a").css('opacity','0.5');
+          }
+        </script>
+        {% endif %}
+		
+		
+		
+		
+		<br>
+		<br>
+		<br>
+		docker swarm join --token SWMTKN-1-428dyyl19znjin0ejdireuwuqrtmeke6yht1yy0es8df6cfcb5-a4094chvhudvtp5uyb0ls9uaz 192.168.43.134:2377
+		
+    </body>
+</html>
